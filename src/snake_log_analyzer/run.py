@@ -1,6 +1,6 @@
 from sys import argv
-from parse import parse_log
-from plot import plot_job_timeseries
+from .parse import parse_log
+from .plot import plot_job_timeseries
 import argparse
 
 def print_usage():

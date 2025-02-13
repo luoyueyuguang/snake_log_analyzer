@@ -27,7 +27,7 @@ def plot_job_timeseries(jobs:dict, output_file:str=None):
         end = jobs[i]['end_time'].replace(tzinfo=None)
         start_min = (start - min_datetime).total_seconds() // 60
         end_min = (end - min_datetime).total_seconds() // 60
-        job_intervals.append((start_min, end_min, jobs[i]['localrule'], jobs[i]['duration'], i))
+        job_intervals.append((start_min, end_min, jobs[i]['localrule'], jobs[i]['duration'] / 60, i))
 
     # 转换时间范围为分钟数字
     total_minutes = (max_time - min_time).total_seconds() // 60
