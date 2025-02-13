@@ -21,15 +21,6 @@ def main():
     output_path = args.output
     jobs = parse_log(file_path)
 
-    # Print the results
-    for job in jobs:
-        print(f"Job ID: {job['rule']} ({job['jobid']})")
-        print(f"Start Time: {job['start_time']}")
-        print(f"End Time: {job['end_time']}")
-        print(f"Duration: {job['duration']:.2f} minutes")
-        print(f"Threads: {job['threads']}")
-        print(f"Command: {job['command']}\n")
-
     print(f"Total number of jobs: {len(jobs)}")
 
     # 绘制时间线图

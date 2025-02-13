@@ -4,23 +4,30 @@ from datetime import datetime
 import numpy as np
 import matplotlib.pyplot as plt
 
-def plot_job_timeseries(jobs, output_file=None):
+def plot_job_timeseries(jobs:dict, output_file:str=None):
     """
     
     """
     # 确定时间范围
-    min_time = min(job['start_time'] for job in jobs)
-    max_time = max(job['end_time'] for job in jobs)
-
+    jobs_key = jobs.keys()
+    min_time = min(jobs[i]['start_time'] for i in jobs_key)
+    max_time = max(jobs[i]['end_time'] for i in jobs_key)
     # 转换时间戳为相对于min_time的分钟数
     min_datetime = min_time.replace(tzinfo=None)
     job_intervals = []
-    for job in jobs:
-        start = job['start_time'].replace(tzinfo=None)
-        end = job['end_time'].replace(tzinfo=None)
-        start_min = (start - min_datetime).total_seconds() // 60  # 转换为分钟
+    #for job in jobs:
+    #    start = job['start_time'].replace(tzinfo=None)
+    #    end = job['end_time'].replace(tzinfo=None)
+    #    start_min = (start - min_datetime).total_seconds() // 60  # 转换为分钟
+    #    end_min = (end - min_datetime).total_seconds() // 60
+    #    job_intervals.append((start_min, end_min, job['localrule'], job['duration'], job['jobid']))
+    
+    for i in jobs_key:
+        start = jobs[i]['start_time'].replace(tzinfo=None)
+        end = jobs[i]['end_time'].replace(tzinfo=None)
+        start_min = (start - min_datetime).total_seconds() // 60
         end_min = (end - min_datetime).total_seconds() // 60
-        job_intervals.append((start_min, end_min, job['rule'], job['duration'], job['jobid']))
+        job_intervals.append((start_min, end_min, jobs[i]['localrule'], jobs[i]['duration'], i))
 
     # 转换时间范围为分钟数字
     total_minutes = (max_time - min_time).total_seconds() // 60
