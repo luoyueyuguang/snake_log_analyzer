@@ -6,5 +6,5 @@ pip install .
 ```
 the command is 
 ```
-snamake_log_analyzer
+snakemake_log_analyzer
 ```
