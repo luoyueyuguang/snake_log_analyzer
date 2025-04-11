@@ -5,7 +5,7 @@ description = "a log analyzer for snakemake, write it with python"
 license = "MIT"
 readme = "README.md"
 keywords = ["log", "analyzer", "snakemake", "bioinformatics"]
-repository = "https://github.com/luoyueyuguang/snakemake_profiling_tools.git"
+repository = "https://github.com/luoyueyuguang/snake_log_analyzer.git"
 
 [tool.poetry.dependencies]
 python = "^3.6"
